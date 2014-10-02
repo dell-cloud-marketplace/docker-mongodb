@@ -1,5 +1,5 @@
-dell-docker-mongodb
-===================
+docker-mongodb
+==============
 
 Base docker image to run a MongoDB database server
 
