@@ -1,5 +1,5 @@
 #docker-mongodb
-This blueprint installs MongoDB – an opens source document oriented database. MongoDB is the leading NoSQL database that supports a JSON style scheme for its data model and schemas.
+This blueprint installs [MongoDB](http://www.mongodb.org/) – an opens source document oriented database. MongoDB is the leading NoSQL database that supports a JSON style scheme for its data model and schemas.
 
 * [Components](#components)
 * [Usage](#usage)
@@ -43,7 +43,7 @@ docker run -d -p 27017:27017 -p 28017:28017 dell/mongodb
 Test your deployment:
 
 ```no-highlight
-curl --user admin:passwordset --digest http://localhost:28017/
+mongo admin -u admin -p <password> --host <host> --port <port>
 ```
 
 <a name="advanced-example-1"></a>
@@ -59,7 +59,6 @@ docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" dell/mongod
 You can now test your new admin password:
 
         mongo admin -u admin -p mypass
-        curl --user admin:mypass --digest http://localhost:28017/
 
 <a name="advanced-example-2"></a>
 ### Advanced Example 2
