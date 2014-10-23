@@ -1,58 +1,158 @@
-docker-mongodb
-==============
+#docker-mongodb
+This blueprint installs MongoDB – an opens source document oriented database. MongoDB is the leading NoSQL database that supports a JSON style scheme for its data model and schemas.
 
-Base docker image to run a MongoDB database server
+* [Components](#components)
+* [Usage](#usage)
+    * [Basic Example](#basic-example)
+    * [Advanced Example 1](#advanced-example-1)   
+    * [Advanced Example 2](#advanced-example-2)   
+* [Administration](#administration)
+    * [Connecting to MongoDB](#connecting-to-mongodb)
+* [Reference](#reference)
+    * [Image Details](#image-details)
+    * [Dockerfile Settings](#dockerfile-settings)
+    * [Port Details](#port-details)
+    * [Volume Details](#volume-details)
+    * [Additional Environmental Settings](#additional-environmental-settings)
+* [Blueprint Details](#blueprint-details)
+* [Building the Image](#building-the-image)
+* [Issues](#issues)
 
+<a name="components"></a>
+## Components
+The software stack comprises of the below component details:
 
-Usage
------
+Name       | Version    | Description
+-----------|------------|------------------------------
+Ubuntu     | Trusty     | Operating system
+MongoDB    | 2.4.9      | Database
 
-To create the image `dell/mongodb`, execute the following command on the dell-mongodb folder:
+**If a component is an up-to-date, compatible version, as determined by the operating system package manager, at installation time, please complete the version information based on the install.**
 
-        docker build -t dell/mongodb .
+<a name="usage"></a>
+## Usage
 
+<a name="basic-example"></a>
+### Basic Example
+Start your image binding host port 27017 to port 27017 and port 28017 to 28017 (MongoDB Server) in your container:
 
-Running the MongoDB server
---------------------------
+```no-highlight
+docker run -d -p 27017:27017 -p 28017:28017 dell/mongodb
+```
 
-Run the following command to start MongoDB:
+Test your deployment:
 
-        docker run -d -p 27017:27017 -p 28017:28017 dell/mongodb
+```no-highlight
+curl --user admin:passwordset --digest http://localhost:28017/
+```
 
-The first time that you run your container, a new random password will be set.
-To get the password, check the logs of the container by running:
+<a name="advanced-example-1"></a>
+### Advanced Example 1
+Start your image with:
 
-        docker logs <CONTAINER_ID>
+* A specific MongoDB admin password. A preset password can be defined instead of a randomly generated one, this is done by setting the environment variable `MONGODB_PASS` to your specific password when running the container.
 
-You will see an output like the following:
-
-        ========================================================================
-        You can now connect to this MongoDB server using:
-
-            mongo admin -u admin -p 5elsT6KtjrqV --host <host> --port <port>
-
-        Please remember to change the above password as soon as possible!
-        ========================================================================
-
-In this case, `5elsT6KtjrqV` is the password set. 
-You can then connect to MongoDB:
-
-         mongo admin -u admin -p 5elsT6KtjrqV
-
-Done!
-
-
-Setting a specific password for the admin account
--------------------------------------------------
-
-If you want to use a preset password instead of a randomly generated one, you can
-set the environment variable `MONGODB_PASS` to your specific password when running the container:
-
-        docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" dell/mongodb
+```no-highlight
+docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" dell/mongodb
+```
 
 You can now test your new admin password:
 
         mongo admin -u admin -p mypass
         curl --user admin:mypass --digest http://localhost:28017/
 
-Based on [https://github.com/tutumcloud/tutum-docker-mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
+<a name="advanced-example-2"></a>
+### Advanced Example 2
+Start your image with:
+
+* A data volume (which will survive a restart)for the MongoDB data files:
+
+```no-highlight
+docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db --name mongodb dell/mongodb
+```
+
+<a name="administration"></a>
+## Administration
+
+<a name="connecting-to-mongodb"></a>
+### Connecting to MongoDB
+The first time that you run your container without presetting the password, a new user admin with all privileges will be created in MongoDB with a random password. To get the password, check the logs of the container. You will see an output like the following:
+
+```no-highlight
+========================================================================
+You can now connect to this MongoDB server using:
+
+    mongo admin -u admin -p 5elsT6KtjrqV --host <host> --port <port>
+
+Please remember to change the above password as soon as possible!
+========================================================================
+```
+
+In this case, **5elsT6KtjrqV** is the password allocated to the admin user.
+
+You can then connect to MongoDB:
+
+```no-highlight
+mongo admin -u admin -p 5elsT6KtjrqV
+```
+
+Note that the root user does not allow connections from outside the container. Please use this admin user instead.
+
+<a name="reference"></a>
+## Reference
+
+<a name="image-details"></a>
+### Image Details
+
+Attribute         | Value
+------------------|------
+Based on          | [tutum/mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
+Github Repository | [https://github.com/ghostshark/docker-mongodb](https://github.com/ghostshark/docker-mongodb)
+Pre-built Image   | [https://registry.hub.docker.com/u/dell/mongodb](https://registry.hub.docker.com/u/dell/mongodb) 
+
+<a name="dockerfile-settings"></a>
+### Dockerfile Settings
+
+Instruction | Value
+------------|------
+VOLUME      | ['/data/db']
+EXPOSE      | ['27017', '28017']
+CMD         | ['/run.sh']
+
+<a name="port-details"></a>
+### Port Details
+
+Port  | Details
+------|--------
+27017 | MongoDB server
+28017 | MongoDB http interface
+
+<a name="volume-details"></a>
+### Volume Details
+
+Path           | Details
+---------------|--------
+/data/db       | MongoDB data
+
+<a name="additional-environmental-settings"></a>
+### Additional Environmental Settings
+
+Variable     | Description
+-------------|------------
+MONGODB_PASS | The MongoDB admin user password. If not specified, a random value will be generated.
+
+<a name="blueprint-details"></a>
+## Blueprint Details
+Under construction.
+
+<a name="building-the-image"></a>
+## Building the Image
+To build the image `dell/mongodb`, clone this repoistory and build the image from the docker-mongodb folder with the following command:
+
+```no-highlight
+git clone https://github.com/ghostshark/docker-mongodb.git
+cd docker-drupal
+docker build -t dell/mongodb .
+```
+<a name="issues"></a>
+## Issues
