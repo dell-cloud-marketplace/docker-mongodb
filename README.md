@@ -151,7 +151,7 @@ To build the image `dell/mongodb`, clone this repoistory and build the image fro
 
 ```no-highlight
 git clone https://github.com/ghostshark/docker-mongodb.git
-cd docker-drupal
+cd docker-mongodb
 docker build -t dell/mongodb .
 ```
 <a name="issues"></a>
