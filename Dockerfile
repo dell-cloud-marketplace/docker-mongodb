@@ -2,14 +2,17 @@ FROM ubuntu:trusty
 MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
 
 
-# Install packages
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mongodb=1:2.4.9-1ubuntu2
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install pwgen
+# Set nvironment variable for package install
+ENV DEBIAN_FRONTEND noninteractive
 
-# Clean packages
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
+# Install packages
+# Install packages
+RUN apt-get update && \
+        echo exit 0 > /usr/sbin/policy-rc.d && \
+        chmod +x /usr/sbin/policy-rc.d && \
+        apt-get install -y mongodb=1:2.4.9-1ubuntu2 pwgen && \
+        apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 # Create the database directory    
 RUN mkdir -p /data/db
