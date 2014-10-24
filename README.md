@@ -44,6 +44,7 @@ Test your deployment:
 
 ```no-highlight
 mongo admin -u admin -p <password> --host <host> --port <port>
+curl --user admin:<password> --digest http://localhost:28017/
 ```
 
 <a name="advanced-example-1"></a>
@@ -93,6 +94,7 @@ You can then connect to MongoDB:
 
 ```no-highlight
 mongo admin -u admin -p 5elsT6KtjrqV
+curl --user admin:5elsT6KtjrqV --digest http://localhost:28017/
 ```
 
 Note that the root user does not allow connections from outside the container. Please use this admin user instead.
