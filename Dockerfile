@@ -6,7 +6,6 @@ MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages
-# Install packages
 RUN apt-get update && \
         echo exit 0 > /usr/sbin/policy-rc.d && \
         chmod +x /usr/sbin/policy-rc.d && \
