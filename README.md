@@ -27,6 +27,7 @@ Start your image with:
 
 * A specific MongoDB admin password. A preset password can be defined instead of a randomly generated one, this is done by setting the environment variable `MONGODB_PASS` to your specific password when running the container.
 
+
     docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" dell/mongodb
 
 You can now test your new admin password:
@@ -38,6 +39,7 @@ You can now test your new admin password:
 Start your image with:
 
 * A data volume (which will survive a restart)for the MongoDB data files:
+
 
     docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db --name mongodb dell/mongodb
 
