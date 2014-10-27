@@ -68,7 +68,5 @@ Note that the root user does not allow connections from outside the container. P
 
 ### Image Details
 
-Attribute         | Value
-------------------|------
-Based on          | [tutum/mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
+Based on [tutum/mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
 Pre-built Image   | [https://registry.hub.docker.com/u/dell/mongodb](https://registry.hub.docker.com/u/dell/mongodb) 
