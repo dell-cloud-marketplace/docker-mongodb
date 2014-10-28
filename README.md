@@ -2,7 +2,7 @@
 Base Docker image to run a [MongoDB](http://www.mongodb.org/) database server.  MongoDB is an open-source document-oriented database, which supports a JSON style-scheme for its data model and schemas.
 
 ## Components
-The software stack comprises of the below component details:
+The software stack comprises the following components:
 
 Name       | Version    | Description
 -----------|------------|------------------------------
@@ -12,14 +12,17 @@ MongoDB    | 2.4.9      | Database
 ## Usage
 
 ### Start the container
-* Host port 27018 to container port 27017 (default admin port)
-* Host port 28018 to container port 28017 (default web status page port)
+
+To:
+
+* Map host port 27018 to container port 27017 (default admin port)
+* Map host port 28018 to container port 28017 (default web status page port)
 
 Do:
 
     docker run -d -p 27018:27017 -p 28018:28017 dell/mongodb
 
-A new admin user with all privileges will be created in MongoDB with a random password. To get the password, check the logs of the container. You will see an output like the following:
+A new admin user, with all privileges, will be created in MongoDB with a random password. To get the password, check the logs of the container. You will see an output like the following:
 
     ====================================================================
     You can now connect to this MongoDB Server using:
