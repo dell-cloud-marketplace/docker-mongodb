@@ -1,5 +1,5 @@
 #docker-mongodb
-Base docker image to run a [MongoDB](http://www.mongodb.org/) database server.  MongoDB is an open-source document-oriented database, which supports a JSON style-scheme for its data model and schemas.
+Base Docker image to run a [MongoDB](http://www.mongodb.org/) database server.  MongoDB is an open-source document-oriented database, which supports a JSON style-scheme for its data model and schemas.
 
 ## Components
 The software stack comprises of the below component details:
