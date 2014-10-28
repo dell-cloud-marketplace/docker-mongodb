@@ -13,16 +13,17 @@ MongoDB    | 2.4.9      | Database
 
 ### Start the container
 
-To:
+To start your container with:
 
-* Map host port 27018 to container port 27017 (default admin port)
-* Map host port 28018 to container port 28017 (default web status page port)
+* A named container ("mongodb")
+* Host port 27018 mapped to container port 27017 (default admin port)
+* Host port 28018 mapped to container port 28017 (default web status page port)
 
 Do:
 
-    docker run -d -p 27018:27017 -p 28018:28017 dell/mongodb
+    docker run -d -p 27018:27017 -p 28018:28017 --name mongodb dell/mongodb
 
-A new admin user, with all privileges, will be created in MongoDB with a random password. To get the password, check the logs of the container (```docker logs <container name>```). You will see output like the following:
+A new admin user, with all privileges, will be created in MongoDB with a random password. To get the password, check the container logs (```docker logs mongodb```). You will see output like the following:
 
     ====================================================================
     You can now connect to this MongoDB Server using:
@@ -52,12 +53,7 @@ You can now test your new admin password:
     mongo admin -u admin -p mypass --host 127.0.0.1 --port 27017
 
 ### Advanced Example 2
-To start your image with:
-
-* A data volume (which will survive a restart) for the MongoDB data files
-* A named container ("mongodb")
-
-Do:
+To start your image with a data volume (which will survive a restart) for the MongoDB data files, do:
 
     docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db \
     --name mongodb dell/mongodb
