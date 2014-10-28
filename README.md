@@ -52,7 +52,12 @@ You can now test your new admin password:
     mongo admin -u admin -p mypass --host 127.0.0.1 --port 27017
 
 ### Advanced Example 2
-To start your image with a data volume (which will survive a restart) for the MongoDB data files, do:
+To start your image with:
+
+* A data volume (which will survive a restart) for the MongoDB data files, do:
+* A named container ("mongodb")
+
+Do:
 
     docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db \
     --name mongodb dell/mongodb
