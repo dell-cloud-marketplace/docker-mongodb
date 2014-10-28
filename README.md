@@ -22,7 +22,7 @@ Do:
 
     docker run -d -p 27018:27017 -p 28018:28017 dell/mongodb
 
-A new admin user, with all privileges, will be created in MongoDB with a random password. To get the password, check the logs of the container. You will see output like the following:
+A new admin user, with all privileges, will be created in MongoDB with a random password. To get the password, check the logs of the container (```docker logs <container name>```). You will see output like the following:
 
     ====================================================================
     You can now connect to this MongoDB Server using:
