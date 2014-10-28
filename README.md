@@ -1,5 +1,5 @@
 #docker-mongodb
-This is a docker container configuration for [MongoDB](http://www.mongodb.org/). MongoDB is an opens source document oriented database. MongoDB is the leading NoSQL database that supports a JSON style scheme for its data model and schemas.
+Base docker image to run a [MongoDB](http://www.mongodb.org/) database server.  MongoDB is an open-source document-oriented database, which supports a JSON style-scheme for its data model and schemas.
 
 ## Components
 The software stack comprises of the below component details:
@@ -17,7 +17,7 @@ MongoDB    | 2.4.9      | Database
 
 Do:
 
-    docker run -d -p 27017:27017 -p 28017:28017 dell/mongodb
+    docker run -d -p 27018:27017 -p 28018:28017 dell/mongodb
 
 A new admin user with all privileges will be created in MongoDB with a random password. To get the password, check the logs of the container. You will see an output like the following:
 
