@@ -54,7 +54,8 @@ You can now test your new admin password:
 ### Advanced Example 2
 To start your image with a data volume (which will survive a restart) for the MongoDB data files, do:
 
-    docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db name mongodb dell/mongodb
+    docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db \
+    --name mongodb dell/mongodb
 
 The MongoDB data is available in **/data/db** on the host.
 
