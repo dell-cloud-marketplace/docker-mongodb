@@ -60,4 +60,5 @@ The MongoDB data is available in **/data/db** on the host.
 ### Image Details
 
 Based on [tutum/mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
+
 Pre-built Image   | [https://registry.hub.docker.com/u/dell/mongodb](https://registry.hub.docker.com/u/dell/mongodb) 
