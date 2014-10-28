@@ -62,7 +62,7 @@ Do:
     docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db \
     --name mongodb dell/mongodb
 
-The MongoDB data will be available in **/data/db** on the host.
+The MongoDB data will be available in **/data/mongodb** on the host.
 
 ## Reference
 
