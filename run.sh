@@ -6,6 +6,7 @@ if [ ! -f /data/db/mongod.lock ]; then
 exec /usr/bin/mongod --nojournal --auth --rest
 else
 rm /data/db/mongod.lock
-mongod --dbpath /data/db --repair && exec /usr/bin/mongod --nojournal --auth --rest --dbpath /data/db
+mongod --dbpath /data/db --repair && \
+	exec /usr/bin/mongod --nojournal --auth --rest --dbpath /data/db
 fi
 
