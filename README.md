@@ -46,16 +46,16 @@ and access the web page:
 ### Advanced Example 1
 To start your image with a specific MongoDB admin password, instead of a randomly generated one, set environment variable `MONGODB_PASS` when running the container:
 
-    docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" dell/mongodb
+    docker run -d -p 27018:27017 -p 28018:28017 -e MONGODB_PASS="mypass" dell/mongodb
 
 You can now test your new admin password:
 
-    mongo admin -u admin -p mypass --host 127.0.0.1 --port 27017
+    mongo admin -u admin -p mypass --host 127.0.0.1 --port 27018
 
 ### Advanced Example 2
 To start your image with a data volume (which will survive a restart) for the MongoDB data files, do:
 
-    docker run -d -p 27017:27017 -p 28017:28017 -v /data/mongodb:/data/db \
+    docker run -d -p 27018:27017 -p 28018:28017 -v /data/mongodb:/data/db \
     --name mongodb dell/mongodb
 
 The MongoDB data will be available in **/data/mongodb** on the host.
