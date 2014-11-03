@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
 
 
-# Set nvironment variable for package install
+# Set environment variable for package install
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages
