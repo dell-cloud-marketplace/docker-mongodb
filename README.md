@@ -7,7 +7,7 @@ The software stack comprises the following components:
 Name       | Version    | Description
 -----------|------------|------------------------------
 Ubuntu     | Trusty     | Operating system
-MongoDB    | 2.4.9      | Database
+MongoDB    | Latest     | Database
 
 ## Usage
 
