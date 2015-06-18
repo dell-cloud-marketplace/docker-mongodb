@@ -31,6 +31,9 @@ COPY run.sh /run.sh
 COPY set_mongodb_password.sh /set_mongodb_password.sh
 RUN chmod 755 ./*.sh
 
+# Environmental variables
+ENV MONGODB_PASS ""
+
 # Expose mongodb port
 EXPOSE 27017
 EXPOSE 28017
