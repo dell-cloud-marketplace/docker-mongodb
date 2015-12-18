@@ -62,6 +62,12 @@ The MongoDB data will be available in **/data/mongodb** on the host.
 
 ## Reference
 
+### Environmental Variables
+
+Variable     | Default  | Description
+-------------|----------|----------------------------
+MONGODB_PASS | *random* | Password for user **admin**
+
 ### Image Details
 
 Based on [tutum/mongodb](https://github.com/tutumcloud/tutum-docker-mongodb)
